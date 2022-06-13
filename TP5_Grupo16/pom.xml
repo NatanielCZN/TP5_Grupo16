@@ -63,8 +63,8 @@
 		<!-- DEPENDENCIAS DE BIND VALIDATION -->
 		<!-- Su uso nos permite imponer ciertas restricciones sobre los atributos de nuestras entidades utilizando anotaciones -->
 		<dependency>
-			 <groupId>org.springframework.boot</groupId>
-			 <artifactId>spring-boot-starter-validation</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 	</dependencies>
 

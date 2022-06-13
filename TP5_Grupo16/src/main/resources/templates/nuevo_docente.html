@@ -1,10 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<meta charset="UTF-8">
+<title>Nuevo Docente</title>
 
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+
+<body class="container bg-secondary">	
+	<header th:replace="/layouts/header :: header"></header>
+	
+	<section class="row bg-light py-2">
+		<h2 class="text-center">FORMULARIO DOCENTE</h2>
+		<hr />
+	
+		<form class="col-12 col-md-8 offset-md-2 mb-2" th:action="@{/docente/guardar}" th:object="${docente}" th:method="POST">
+			<div class="mb-3">
+				<label for="idLegajo" class="form-label">Legajo</label>
+				<!-- "th:field" se refiere al valor del legajo -->
+				<input type="number" class="form-control" id="idLegajo" name="legajo" th:field="*{legajo}" placeholder="Ingrese DNI" />
+				<!-- Mostrar mensaje asociado con la validacion de legajo -->
+				<div class="text-danger" th:if="${#fields.hasErrors('legajo')}" th:errors="*{legajo}" ></div>
+			</div>
+
+			<div class="mb-3">
+				<label for="idNombres" class="form-label">Nombres</label> 
+				<input type="text" class="form-control" id="idNombres" name="nombres" th:field="*{nombre}" placeholder="Ingrese Nombre" />
+				<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" ></div>
+			</div>
+
+			<div class="mb-3">
+				<label for="idApellidos" class="form-label">Apellidos</label> 
+				<input type="text" class="form-control" id="idApellidos" name="apellidos" th:field="*{apellido}" placeholder="Ingrese Apellido" />
+				<div class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" ></div>
+			</div>
+
+			<div class="mb-3">
+				<label for="idEmail" class="form-label">E-mail</label> 
+				<input type="email" class="form-control" id="idEmail" name="email" th:field="*{email}" placeholder="Ingrese E-mail" />
+				<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></div>
+			</div>
+
+			<div class="mb-3">
+				<label for="idTelefono" class="form-label">Teléfono</label> 
+				<input type="number" class="form-control" id="idTelefono" name="telefono" th:field="*{telefono}" placeholder="Ingrese Telefono" />
+				<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}" ></div>
+			</div>
+
+			<div class="text-center">
+				<button type="submit" class="border-dark btn btn-primary m-2">Enviar</button>
+				<a class="border-dark btn btn-secondary m-2" th:href="@{/home}" id="cancelar" >Cancelar</a>
+			</div>
+		</form>
+		
+		<hr />
+	</section>	
+	
+	<footer th:replace="layouts/footer :: footer"></footer>
+	
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

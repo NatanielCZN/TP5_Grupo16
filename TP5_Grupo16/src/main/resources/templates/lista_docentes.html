@@ -1,10 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<meta charset="UTF-8">
+<title>Lista Docentes</title>
 
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+
+<body class="container bg-secondary">
+	<header th:replace="/layouts/header :: header"></header>
+	
+	<section class="row bg-light py-2">
+		<h2 class="text-center">DOCENTES</h2>
+		<hr />
+	
+		<div class="text-end">
+			<a class="border-dark btn btn-primary m-2" id="nuevoDocente" th:href="@{/docente/nuevo}" >Nuevo Docente</a>
+		</div>		
+		
+		<table class="table table-striped table-hover table-responsive table-bordered text-center">
+			<thead>
+				<tr>
+					<th>Legajo</th>
+					<th>Nombres</th>
+					<th>Apellidos</th>
+					<th>E-mail</th>
+					<th>Teléfono</th>
+					<th>Opciones</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="docente: ${docentes}">
+					<td th:text="${docente.legajo}" ></td>
+					<td th:text="${docente.nombre}" ></td>
+					<td th:text="${docente.apellido}" ></td>
+					<td th:text="${docente.email}" ></td>
+					<td th:text="${docente.telefono}" ></td>
+					<td>
+						<!-- El signo "+" concatena la ruta -->
+						<a class="border-dark btn btn-danger my-2" id="editarDocente" th:href="@{/docente/editar/} + ${docente.legajo}" >Editar</a>
+						<a class="border-dark btn btn-warning my-2" id="eliminarDocente" th:href="@{/docente/eliminar/} + ${docente.legajo}" >Eliminar</a>
+					</td>
+				</tr>
+			</tbody>			
+		</table>
+	
+	</section>
+	
+	<footer th:replace="layouts/footer :: footer"></footer>
+	
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
